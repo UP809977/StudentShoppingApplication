@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Student Shopping Application</string>
+    <string name="button_search">Search</string>
+    <string name="serach_box">Search</string>
+    <string name="button_barcode">Barcode Scanner</string>
+    <string name="button_add_new">Add New Item</string>
+    <string name="text_Barcode">Barcode</string>
+    <string name="text_ItemName">Item Name</string>
+    <string name="text_Price">Item Price</string>
+    <string name="newBarcode">Enter the Barcode</string>
+    <string name="newItemName">Enter the Item Name</string>
+    <string name="newPrice">Enter the Price</string>
+    <string name="buttonSubmit">Submit</string>
+</resources>
