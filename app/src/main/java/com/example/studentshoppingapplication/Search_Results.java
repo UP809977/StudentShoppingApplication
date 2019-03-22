@@ -34,6 +34,8 @@ public class Search_Results extends AppCompatActivity {
 
 
 
+
+
         DatabaseHandler databaseHandler = new DatabaseHandler(this);
         database = databaseHandler.getWritableDatabase();
 
