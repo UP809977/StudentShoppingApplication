@@ -69,11 +69,15 @@ public class Search_Results extends AppCompatActivity {
         //This is the code that is used to search the database
         //currently this code does not function as intended as it gives a null object reference error
 
-        search = Main.itemSearch.toString().trim(); // this line appears to be the problem
-        String[] searchQuery = new String[]{search};
-        if (searchQuery == null){
-            Toast.makeText(Search_Results.this, "Search id null", Toast.LENGTH_SHORT).show();
+        search ="";
+        if (Main.itemSearch != null){
+            search = Main.itemSearch.toString(); // this line appears to be the problem
         }
+
+        String[] searchQuery = new String[]{search};
+//        if (searchQuery == null){
+//            Toast.makeText(Search_Results.this, "Search id null", Toast.LENGTH_SHORT).show();
+//        }
 
         return database.rawQuery("select * from " + TABLE_NAME + " where " + C_Item_Name + " = ? ",searchQuery);
 
