@@ -11,10 +11,9 @@
         android:id="@+id/itemSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="@string/serach_box"
-        android:inputType="textPersonName"
+        android:inputType="text"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
