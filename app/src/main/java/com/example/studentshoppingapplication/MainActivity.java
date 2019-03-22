@@ -30,9 +30,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //String search = searchResults.getText().toString().trim();
                 Toast.makeText(MainActivity.this, itemSearch.getText(), Toast.LENGTH_SHORT).show();
-                itemSearch.getText().clear();
                 if(itemSearch.getText() != null){
                     openSearch_Results();
+                    itemSearch.getText().clear();
                 }else{
                     Toast.makeText(MainActivity.this, "Cannot leave search blank", Toast.LENGTH_SHORT).show();
                 }
