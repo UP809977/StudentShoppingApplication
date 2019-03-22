@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import static com.example.studentshoppingapplication.DatabaseHandler.C_Item_Name;
 import static com.example.studentshoppingapplication.DatabaseHandler.TABLE_NAME;
@@ -68,6 +69,10 @@ public class Search_Results extends AppCompatActivity {
 
         search = Main.itemSearch.toString().trim(); // this line appears to be the problem
         String[] searchQuery = new String[]{search};
+        if (searchQuery == null){
+            Toast.makeText(Search_Results.this, "Search id null", Toast.LENGTH_SHORT).show();
+        }
+
         return database.rawQuery("select * from " + TABLE_NAME + " where " + C_Item_Name + " = ? ",searchQuery);
 
     }
