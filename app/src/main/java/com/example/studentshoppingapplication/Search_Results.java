@@ -21,7 +21,7 @@ public class Search_Results extends AppCompatActivity {
     private Button addNewItem;
     private SQLiteDatabase database;
     private ItemSearchAdapter mAdapter;
-    private MainActivity Main;
+    public MainActivity Main;
     public String search;
 
 
@@ -70,8 +70,8 @@ public class Search_Results extends AppCompatActivity {
         //currently this code does not function as intended as it gives a null object reference error
 
         search ="";
-        if (Main.itemSearch != null){
-            search = Main.itemSearch.toString(); // this line appears to be the problem
+        if (MainActivity.itemSearch != null){
+            search = MainActivity.itemSearch.getText().toString(); // this line appears to be the problem
         }
 
         String[] searchQuery = new String[]{search};

@@ -11,7 +11,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     private Button searchResults;
     private Button barcodeScanner;
-    public EditText itemSearch;
+    public static EditText itemSearch;
     //public String search;
 
     @Override
