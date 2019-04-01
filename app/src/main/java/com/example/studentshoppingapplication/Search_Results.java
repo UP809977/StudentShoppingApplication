@@ -30,6 +30,7 @@ public class Search_Results extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search__results);
         addNewItem = findViewById(R.id.add_new_button);
+        Main = new MainActivity();
 
 
 
@@ -69,9 +70,9 @@ public class Search_Results extends AppCompatActivity {
         //This is the code that is used to search the database
         //currently this code does not function as intended as it gives a null object reference error
 
-        search ="";
-        if (MainActivity.itemSearch != null){
-            search = MainActivity.itemSearch.getText().toString(); // this line appears to be the problem
+        //search ="";
+        if (Main.itemSearch != null){
+            search = Main.itemSearch.getText().toString(); // this line appears to be the problem
         }
 
         String[] searchQuery = new String[]{search};
