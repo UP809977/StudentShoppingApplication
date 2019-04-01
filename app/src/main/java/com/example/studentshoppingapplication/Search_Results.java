@@ -70,9 +70,9 @@ public class Search_Results extends AppCompatActivity {
         //This is the code that is used to search the database
         //currently this code does not function as intended as it gives a null object reference error
 
-        //search ="";
+        search = "";
         if (Main.itemSearch != null){
-            search = Main.itemSearch.getText().toString(); // this line appears to be the problem
+            search = Main.itemSearch.getText().toString();
         }
 
         String[] searchQuery = new String[]{search};
