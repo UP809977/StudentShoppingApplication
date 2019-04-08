@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void openSearch_Results() {
         Intent searchResults = new Intent(this, Search_Results.class);
+        searchResults.putExtra("search",itemSearch.getText().toString());
         startActivity(searchResults);
     }
 

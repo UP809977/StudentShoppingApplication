@@ -70,12 +70,15 @@ public class Search_Results extends AppCompatActivity {
         //This is the code that is used to search the database
         //currently this code does not function as intended as it gives a null object reference error
 
-        search = "";
+        Intent search = getIntent();
+        String incomingSearch = search.getStringExtra("search");
+/*
         if (Main.itemSearch != null){
             search = Main.itemSearch.getText().toString();
         }
+*/
 
-        String[] searchQuery = new String[]{search};
+        String[] searchQuery = new String[]{incomingSearch};
 //        if (searchQuery == null){
 //            Toast.makeText(Search_Results.this, "Search id null", Toast.LENGTH_SHORT).show();
 //        }
