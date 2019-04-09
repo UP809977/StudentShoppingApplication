@@ -7,11 +7,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 public class MainActivity extends AppCompatActivity {
     private Button searchResults;
     private Button barcodeScanner;
     public EditText itemSearch;
+    private RecyclerView itemRecycler;
     //public String search;
 
     @Override
@@ -24,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         searchResults = findViewById(R.id.search_button);
         barcodeScanner = findViewById(R.id.barcode_button);
         itemSearch = findViewById(R.id.itemSearch);
+        itemRecycler = findViewById(R.id.itemRecycler);
 
         searchResults.setOnClickListener(new View.OnClickListener() {
             @Override

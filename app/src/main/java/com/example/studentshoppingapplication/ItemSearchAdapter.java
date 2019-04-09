@@ -13,6 +13,8 @@ public class ItemSearchAdapter extends RecyclerView.Adapter<ItemSearchAdapter.It
     private Context mContext;
     private Cursor mCursor;
 
+
+
     public ItemSearchAdapter(Context context, Cursor cursor){
         mContext = context;
         mCursor = cursor;
@@ -23,7 +25,7 @@ public class ItemSearchAdapter extends RecyclerView.Adapter<ItemSearchAdapter.It
         public TextView itemName;
         public TextView itemPrice;
 
-        public ItemSearchHolder(@NonNull View itemView) {
+        public ItemSearchHolder(View itemView) {
             super(itemView);
 
             itemName = itemView.findViewById(R.id.textView_ItemName);
@@ -31,7 +33,6 @@ public class ItemSearchAdapter extends RecyclerView.Adapter<ItemSearchAdapter.It
         }
     }
 
-    @NonNull
     @Override
     public ItemSearchHolder onCreateViewHolder( ViewGroup viewGroup, int i) {
         LayoutInflater inflater = LayoutInflater.from(mContext);
@@ -40,7 +41,7 @@ public class ItemSearchAdapter extends RecyclerView.Adapter<ItemSearchAdapter.It
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ItemSearchHolder itemSearchHolder, int i) {
+    public void onBindViewHolder(ItemSearchHolder itemSearchHolder, int i) {
         if (!mCursor.moveToPosition(i)){
             String name = mCursor.getString(mCursor.getColumnIndex(DatabaseHandler.C_Item_Name));
             float price = mCursor.getFloat(mCursor.getColumnIndex(DatabaseHandler.C_Price));

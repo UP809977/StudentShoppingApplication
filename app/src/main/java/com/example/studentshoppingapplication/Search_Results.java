@@ -38,10 +38,10 @@ public class Search_Results extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.itemResultsRecycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mAdapter = new ItemSearchAdapter(this,getAllItems());
+        mAdapter = new ItemSearchAdapter(this,getSearchItems());
         recyclerView.setAdapter(mAdapter);
 
-        mAdapter.swapCursor(getAllItems());
+        mAdapter.swapCursor(getSearchItems());
 
         addNewItem.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,7 +56,7 @@ public class Search_Results extends AppCompatActivity {
         startActivity(addNewItem);
     }
 
-    private Cursor getAllItems(){
+    private Cursor getSearchItems(){
         //This is the code that is used to search the database
 
         Intent search = getIntent();
