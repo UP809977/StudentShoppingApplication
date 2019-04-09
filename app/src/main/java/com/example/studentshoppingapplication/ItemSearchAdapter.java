@@ -43,7 +43,7 @@ public class ItemSearchAdapter extends RecyclerView.Adapter<ItemSearchAdapter.It
     public void onBindViewHolder(@NonNull ItemSearchHolder itemSearchHolder, int i) {
         if (!mCursor.moveToPosition(i)){
             String name = mCursor.getString(mCursor.getColumnIndex(DatabaseHandler.C_Item_Name));
-            int price = mCursor.getInt(mCursor.getColumnIndex(DatabaseHandler.C_Price));
+            float price = mCursor.getFloat(mCursor.getColumnIndex(DatabaseHandler.C_Price));
 
             itemSearchHolder.itemName.setText(name);
             itemSearchHolder.itemPrice.setText(String.valueOf(price));
