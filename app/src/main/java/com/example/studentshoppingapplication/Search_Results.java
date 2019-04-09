@@ -33,10 +33,6 @@ public class Search_Results extends AppCompatActivity {
         Main = new MainActivity();
 
 
-
-
-
-
         DatabaseHandler databaseHandler = new DatabaseHandler(this);
         database = databaseHandler.getWritableDatabase();
 
@@ -61,14 +57,7 @@ public class Search_Results extends AppCompatActivity {
     }
 
     private Cursor getAllItems(){
-        //selects all items from the database and displays them in the itemsearch recycler view.
-        //this cod is not meant to be un the final version but is here so that the code from the recycler can be tested as working
-
-        //return database.rawQuery("select * from " +TABLE_NAME +" where "+ C_Item_Name +" = " +C_Item_Name ,null);
-
-
         //This is the code that is used to search the database
-        //currently this code does not function as intended as it gives a null object reference error
 
         Intent search = getIntent();
         String incomingSearch = search.getStringExtra("search");
@@ -83,7 +72,7 @@ public class Search_Results extends AppCompatActivity {
 //            Toast.makeText(Search_Results.this, "Search id null", Toast.LENGTH_SHORT).show();
 //        }
 
-        return database.rawQuery("select * from " + TABLE_NAME + " where " + C_Item_Name + " = ? ",searchQuery);
+        return database.rawQuery("select * from " + TABLE_NAME + " where " + C_Item_Name + " = ?",searchQuery);
 
     }
 
