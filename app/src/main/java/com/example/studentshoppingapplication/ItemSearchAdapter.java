@@ -42,7 +42,7 @@ public class ItemSearchAdapter extends RecyclerView.Adapter<ItemSearchAdapter.It
 
     @Override
     public void onBindViewHolder(ItemSearchHolder itemSearchHolder, int i) {
-        if (!mCursor.moveToPosition(i)){
+        if (mCursor.moveToPosition(i)){
             String name = mCursor.getString(mCursor.getColumnIndex(DatabaseHandler.C_Item_Name));
             float price = mCursor.getFloat(mCursor.getColumnIndex(DatabaseHandler.C_Price));
 
