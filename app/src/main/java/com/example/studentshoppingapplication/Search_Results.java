@@ -22,7 +22,7 @@ public class Search_Results extends AppCompatActivity {
     private SQLiteDatabase database;
     private ItemSearchAdapter mAdapter;
     public MainActivity Main;
-    public String search;
+
 
 
     @Override
@@ -61,16 +61,8 @@ public class Search_Results extends AppCompatActivity {
 
         Intent search = getIntent();
         String incomingSearch = search.getStringExtra("search");
-/*
-        if (Main.itemSearch != null){
-            search = Main.itemSearch.getText().toString();
-        }
-*/
 
         String[] searchQuery = new String[]{incomingSearch};
-//        if (searchQuery == null){
-//            Toast.makeText(Search_Results.this, "Search id null", Toast.LENGTH_SHORT).show();
-//        }
 
         return database.rawQuery("select * from " + TABLE_NAME + " where " + C_Item_Name + " = ?",searchQuery);
 
