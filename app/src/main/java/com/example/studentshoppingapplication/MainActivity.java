@@ -10,24 +10,39 @@ import android.widget.Toast;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
     private Button searchResults;
     private Button barcodeScanner;
     public EditText itemSearch;
     private RecyclerView itemRecycler;
-    //public String search;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ArrayList<SelectedItems> selecteditems = new ArrayList<>();
+        selecteditems.add(new SelectedItems("Select an Item",0));
+
+        itemRecycler = findViewById(R.id.itemRecycler);
+        mLayoutManager = new LinearLayoutManager(this);
+        mAdapter = new ItemListAdapter(selecteditems);
+
+        itemRecycler.setLayoutManager(mLayoutManager);
+        itemRecycler.setAdapter(mAdapter);
+
+
         DatabaseHandler databaseHandler = new DatabaseHandler(this);
 
         searchResults = findViewById(R.id.search_button);
         barcodeScanner = findViewById(R.id.barcode_button);
         itemSearch = findViewById(R.id.itemSearch);
-        itemRecycler = findViewById(R.id.itemRecycler);
+
 
         searchResults.setOnClickListener(new View.OnClickListener() {
             @Override
