@@ -21,7 +21,7 @@ public class ItemSearchAdapter extends RecyclerView.Adapter<ItemSearchAdapter.It
 
     }
 
-    public class ItemSearchHolder extends RecyclerView.ViewHolder{
+    public static class ItemSearchHolder extends RecyclerView.ViewHolder{
         public TextView itemName;
         public TextView itemPrice;
 
