@@ -41,6 +41,14 @@ public class Search_Results extends AppCompatActivity {
         mAdapter = new ItemSearchAdapter(this,getSearchItems());
         recyclerView.setAdapter(mAdapter);
 
+        mAdapter.setOnItemClickListener(new ItemSearchAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int i) {
+                //code for item postiion (i) goes in here
+
+            }
+        });
+
         mAdapter.swapCursor(getSearchItems());
 
         addNewItem.setOnClickListener(new View.OnClickListener() {

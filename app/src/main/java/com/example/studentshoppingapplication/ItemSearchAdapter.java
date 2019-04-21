@@ -12,6 +12,15 @@ import android.widget.TextView;
 public class ItemSearchAdapter extends RecyclerView.Adapter<ItemSearchAdapter.ItemSearchHolder> {
     private Context mContext;
     private Cursor mCursor;
+    private OnItemClickListener mListener;
+
+    public interface OnItemClickListener{
+        void onItemClick(int i);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listner){
+        mListener = listner;
+    }
 
 
 
@@ -25,11 +34,24 @@ public class ItemSearchAdapter extends RecyclerView.Adapter<ItemSearchAdapter.It
         public TextView itemName;
         public TextView itemPrice;
 
-        public ItemSearchHolder(View itemView) {
+        public ItemSearchHolder(View itemView, final OnItemClickListener listener) {
             super(itemView);
 
             itemName = itemView.findViewById(R.id.textView_ItemName);
             itemPrice = itemView.findViewById(R.id.textView_ItemPrice);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listener != null){
+                        int i = getAdapterPosition();
+                        if(i != RecyclerView.NO_POSITION){
+                            listener.onItemClick(i);
+                        }
+                    }
+
+                }
+            });
         }
     }
 
@@ -37,7 +59,7 @@ public class ItemSearchAdapter extends RecyclerView.Adapter<ItemSearchAdapter.It
     public ItemSearchHolder onCreateViewHolder( ViewGroup viewGroup, int i) {
         LayoutInflater inflater = LayoutInflater.from(mContext);
         View view = inflater.inflate(R.layout.item_search_recycler, viewGroup, false);
-        return new ItemSearchHolder(view);
+        return new ItemSearchHolder(view, mListener);
     }
 
     @Override
@@ -48,6 +70,8 @@ public class ItemSearchAdapter extends RecyclerView.Adapter<ItemSearchAdapter.It
 
             itemSearchHolder.itemName.setText(name);
             itemSearchHolder.itemPrice.setText(String.valueOf(price));
+
+
         }
 
     }
