@@ -8,9 +8,11 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
 
 import static com.example.studentshoppingapplication.DatabaseHandler.C_Item_Name;
 import static com.example.studentshoppingapplication.DatabaseHandler.TABLE_NAME;
@@ -22,6 +24,7 @@ public class Search_Results extends AppCompatActivity {
     private SQLiteDatabase database;
     private ItemSearchAdapter mAdapter;
     public MainActivity Main;
+    public Cursor mCursor;
 
 
 
@@ -38,13 +41,29 @@ public class Search_Results extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.itemResultsRecycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mAdapter = new ItemSearchAdapter(this,getSearchItems());
+        mCursor = getSearchItems();
+        mAdapter = new ItemSearchAdapter(this,mCursor);
+
         recyclerView.setAdapter(mAdapter);
+
+
 
         mAdapter.setOnItemClickListener(new ItemSearchAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(int i) {
-                //code for item postiion (i) goes in here
+            public void onItemClick(int i,String name,float price) {
+                Log.d("i: ","i test");
+                Log.d("item name sr: ",name);
+                Log.d("item price sr: ",String.valueOf(price));
+
+                //SelectedItems chosenItem = selecteditems.add(new SelectedItems(name,price));
+                sendSelectedItemToMainActivity(name,price);
+
+
+
+
+
+
+
 
             }
         });
@@ -73,6 +92,13 @@ public class Search_Results extends AppCompatActivity {
         String[] searchQuery = new String[]{incomingSearch};
 
         return database.rawQuery("select * from " + TABLE_NAME + " where " + C_Item_Name + " = ?",searchQuery);
+
+    }
+
+    private void sendSelectedItemToMainActivity(String name, Float price){
+        Intent itemChosen = new Intent(this,MainActivity.class);
+        itemChosen.putExtra("iName",name);
+        itemChosen.putExtra("iPrice",price);
 
     }
 

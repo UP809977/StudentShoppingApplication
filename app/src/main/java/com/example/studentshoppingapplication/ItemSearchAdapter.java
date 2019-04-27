@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +14,10 @@ public class ItemSearchAdapter extends RecyclerView.Adapter<ItemSearchAdapter.It
     private Context mContext;
     private Cursor mCursor;
     private OnItemClickListener mListener;
+    //private ItemSearchAdapter that;
 
     public interface OnItemClickListener{
-        void onItemClick(int i);
+        void onItemClick(int i,String name, float price);
     }
 
     public void setOnItemClickListener(OnItemClickListener listner){
@@ -27,6 +29,7 @@ public class ItemSearchAdapter extends RecyclerView.Adapter<ItemSearchAdapter.It
     public ItemSearchAdapter(Context context, Cursor cursor){
         mContext = context;
         mCursor = cursor;
+        //that = this;
 
     }
 
@@ -38,15 +41,22 @@ public class ItemSearchAdapter extends RecyclerView.Adapter<ItemSearchAdapter.It
             super(itemView);
 
             itemName = itemView.findViewById(R.id.textView_ItemName);
+
             itemPrice = itemView.findViewById(R.id.textView_ItemPrice);
+
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Log.e("onClick test: ","hello");
+
                     if (listener != null){
                         int i = getAdapterPosition();
                         if(i != RecyclerView.NO_POSITION){
-                            listener.onItemClick(i);
+
+                            listener.onItemClick(i,itemName.getText().toString(),Float.valueOf(itemPrice.getText().toString()));
+                            
+
                         }
                     }
 
@@ -91,5 +101,7 @@ public class ItemSearchAdapter extends RecyclerView.Adapter<ItemSearchAdapter.It
             notifyDataSetChanged();
         }
     }
+
+
 }
 
