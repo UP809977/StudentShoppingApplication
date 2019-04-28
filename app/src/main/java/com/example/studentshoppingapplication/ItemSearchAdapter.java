@@ -29,7 +29,6 @@ public class ItemSearchAdapter extends RecyclerView.Adapter<ItemSearchAdapter.It
     public ItemSearchAdapter(Context context, Cursor cursor){
         mContext = context;
         mCursor = cursor;
-        //that = this;
 
     }
 

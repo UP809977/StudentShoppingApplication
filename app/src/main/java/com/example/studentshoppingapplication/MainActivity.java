@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView itemRecycler;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private final int SEARCH_RES = 1;
+    private ArrayList<SelectedItems> selecteditems = new ArrayList<>();
 
 
     @Override
@@ -26,8 +28,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ArrayList<SelectedItems> selecteditems = new ArrayList<>();
         selecteditems.add(new SelectedItems("Select an Item",0));
+        //Intent item = getIntent();
+
 
         itemRecycler = findViewById(R.id.itemRecycler);
         mLayoutManager = new LinearLayoutManager(this);
@@ -42,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         searchResults = findViewById(R.id.search_button);
         barcodeScanner = findViewById(R.id.barcode_button);
         itemSearch = findViewById(R.id.itemSearch);
+
+
 
 
         searchResults.setOnClickListener(new View.OnClickListener() {
@@ -72,12 +77,23 @@ public class MainActivity extends AppCompatActivity {
     public void openSearch_Results() {
         Intent searchResults = new Intent(this, Search_Results.class);
         searchResults.putExtra("search",itemSearch.getText().toString());
-        startActivity(searchResults);
+        startActivityForResult(searchResults,SEARCH_RES);
     }
 
     public void openBarcodeScanner(){
         Intent barcodeScanner = new Intent(this,BarcodeScanner.class);
         startActivity(barcodeScanner);
+    }
+    protected void onActivityResult(int requestCode, int resultCode, Intent data ){
+        if (resultCode == RESULT_OK && requestCode == SEARCH_RES){
+            Bundle extras = data.getExtras();
+            if (extras != null){
+                String name = extras.getString("iName");
+                float price = extras.getFloat("iPrice");
+                selecteditems.add(new SelectedItems(name,price));
+            }
+        }
+
     }
 }
 

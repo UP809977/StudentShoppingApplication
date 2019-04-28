@@ -58,13 +58,6 @@ public class Search_Results extends AppCompatActivity {
                 //SelectedItems chosenItem = selecteditems.add(new SelectedItems(name,price));
                 sendSelectedItemToMainActivity(name,price);
 
-
-
-
-
-
-
-
             }
         });
 
@@ -99,7 +92,10 @@ public class Search_Results extends AppCompatActivity {
         Intent itemChosen = new Intent(this,MainActivity.class);
         itemChosen.putExtra("iName",name);
         itemChosen.putExtra("iPrice",price);
+        setResult(RESULT_OK,itemChosen);
+        finish();
 
     }
+
 
 }
