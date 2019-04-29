@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 int pos = viewHolder.getAdapterPosition();
                 selecteditems.remove(pos);
                 mAdapter.notifyDataSetChanged();
+                Toast.makeText(MainActivity.this,"item removed from shopping list",Toast.LENGTH_SHORT).show();
 
             }
         }).attachToRecyclerView(itemRecycler);
