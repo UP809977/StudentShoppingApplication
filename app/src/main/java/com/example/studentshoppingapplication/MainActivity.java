@@ -1,8 +1,10 @@
 package com.example.studentshoppingapplication;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,6 +40,21 @@ public class MainActivity extends AppCompatActivity {
 
         itemRecycler.setLayoutManager(mLayoutManager);
         itemRecycler.setAdapter(mAdapter);
+
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder viewHolder1) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+                int pos = viewHolder.getAdapterPosition();
+                selecteditems.remove(pos);
+                mAdapter.notifyDataSetChanged();
+
+            }
+        }).attachToRecyclerView(itemRecycler);
 
 
         DatabaseHandler databaseHandler = new DatabaseHandler(this);
