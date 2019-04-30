@@ -34,13 +34,14 @@
         android:id="@+id/itemNameEntry"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="65dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="68dp"
         android:layout_marginEnd="40dp"
         android:ems="10"
         android:hint="@string/newItemName"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/barcodeEntry" />
 
@@ -72,8 +73,8 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="91dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="88dp"
         android:text="@string/text_ItemName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
@@ -92,21 +93,11 @@
         android:id="@+id/submitNewEntry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="76dp"
         android:text="@string/buttonSubmit"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.043"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/priceEntry" />
-
-    <Button
-        android:id="@+id/database_test_button"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginStart="164dp"
-        android:layout_marginTop="180dp"
-        android:text="Button"
-        app:layout_constraintStart_toEndOf="@+id/submitNewEntry"
-        app:layout_constraintTop_toBottomOf="@+id/itemNameEntry" />
 
 </android.support.constraint.ConstraintLayout>
