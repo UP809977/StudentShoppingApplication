@@ -11,6 +11,7 @@ import android.text.Editable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -25,6 +26,7 @@ public class Search_Results extends AppCompatActivity {
     private ItemSearchAdapter mAdapter;
     public MainActivity Main;
     public Cursor mCursor;
+    private TextView itemSearched;
 
 
 
@@ -34,6 +36,7 @@ public class Search_Results extends AppCompatActivity {
         setContentView(R.layout.activity_search__results);
         addNewItem = findViewById(R.id.add_new_button);
         Main = new MainActivity();
+        itemSearched = findViewById(R.id.itemSearched);
 
 
         DatabaseHandler databaseHandler = new DatabaseHandler(this);
@@ -81,6 +84,7 @@ public class Search_Results extends AppCompatActivity {
 
         Intent search = getIntent();
         String incomingSearch = search.getStringExtra("search");
+        itemSearched.setText(incomingSearch);
 
         String[] searchQuery = new String[]{incomingSearch};
 
