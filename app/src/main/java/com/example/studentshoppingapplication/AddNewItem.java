@@ -1,6 +1,7 @@
 package com.example.studentshoppingapplication;
 
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -40,6 +41,8 @@ public class AddNewItem extends AppCompatActivity {
                     barcode.getText().clear();
                     itemName.getText().clear();
                     itemPrice.getText().clear();
+                    backToMain();
+
 
                 } else {
                     Toast.makeText(AddNewItem.this, "An Error occurred please check data and try again", Toast.LENGTH_SHORT).show();
@@ -52,6 +55,11 @@ public class AddNewItem extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void backToMain(){
+        Intent openMain = new Intent(this,MainActivity.class);
+        startActivity(openMain);
     }
 
 }
