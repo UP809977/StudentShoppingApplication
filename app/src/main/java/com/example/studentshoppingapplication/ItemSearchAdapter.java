@@ -19,7 +19,7 @@ public class ItemSearchAdapter extends RecyclerView.Adapter<ItemSearchAdapter.It
 
     public interface OnItemClickListener{
         void onItemClick(String name, float price);
-        void onEditClick (String name, float price);
+        void onEditClick (String barcode , String name, float price);
     }
 
     public void setOnItemClickListener(OnItemClickListener listner){
@@ -37,6 +37,7 @@ public class ItemSearchAdapter extends RecyclerView.Adapter<ItemSearchAdapter.It
     public static class ItemSearchHolder extends RecyclerView.ViewHolder{
         public TextView itemName;
         public TextView itemPrice;
+        public TextView itemBarcode;
         public ImageView mEdit;
 
         public ItemSearchHolder(View itemView, final OnItemClickListener listener) {
@@ -44,6 +45,7 @@ public class ItemSearchAdapter extends RecyclerView.Adapter<ItemSearchAdapter.It
 
             itemName = itemView.findViewById(R.id.textView_ItemName);
             itemPrice = itemView.findViewById(R.id.textView_ItemPrice);
+            itemBarcode = itemView.findViewById(R.id.barcode);
             mEdit = itemView.findViewById(R.id.edit);
 
 
@@ -70,7 +72,7 @@ public class ItemSearchAdapter extends RecyclerView.Adapter<ItemSearchAdapter.It
                         int i = getAdapterPosition();
                         if(i != RecyclerView.NO_POSITION){
 
-                            listener.onEditClick(itemName.getText().toString(),Float.valueOf(itemPrice.getText().toString()));
+                            listener.onEditClick(itemBarcode.getText().toString(),itemName.getText().toString(),Float.valueOf(itemPrice.getText().toString()));
 
                         }
                     }
@@ -98,7 +100,7 @@ public class ItemSearchAdapter extends RecyclerView.Adapter<ItemSearchAdapter.It
             itemSearchHolder.itemName.setText(name);
             itemSearchHolder.itemPrice.setText(String.valueOf(price));
             itemSearchHolder.itemView.setTag(id);
-            itemSearchHolder.itemView.setTag(barcode);
+            itemSearchHolder.itemBarcode.setText(barcode);
 
 
         }

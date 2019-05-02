@@ -30,9 +30,10 @@ public class EditItem extends AppCompatActivity {
 
     public void getEditItems(){
         Intent itemEdit = getIntent();
-        //String incomingEBarcode = itemEdit.getStringExtra("eBarcode");
+        String incomingEBarcode = itemEdit.getStringExtra("eBarcode");
         String incomingEName = itemEdit.getStringExtra("eName");
         float incomingEPrice = itemEdit.getFloatExtra("ePrice",0);
+        editBarcode.setText(incomingEBarcode);
         editItemName.setText(incomingEName);
         editPrice.setText(valueOf(incomingEPrice));
 
