@@ -21,7 +21,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public static final String C_Item_Name = "Item_Name";
    //private static final String C_Supermarket= "Supermarket";
     public static final String C_Price= "Price";
-    private static final String C_Barcode= "Barcode";
+    public static final String C_Barcode= "Barcode";
 
 
 
@@ -62,6 +62,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         else {
             return true;
         }
+
+    }
+
+    public boolean upDateItem (String barcode, String itemName, String price){
+        SQLiteDatabase database = this.getReadableDatabase();
+        ContentValues edirItem = new ContentValues();
+        edirItem.put(C_Item_Name, itemName);
+        edirItem.put(C_Price, price);
+        database.update(TABLE_NAME,edirItem," Barcode = ? ",new String[]{ barcode });
+        return true;
 
     }
 

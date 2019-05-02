@@ -24,7 +24,7 @@ public class AddNewItem extends AppCompatActivity {
         barcode = findViewById(R.id.barcodeEntry);
         itemName = findViewById(R.id.itemNameEntry);
         itemPrice = findViewById(R.id.priceEntry);
-        submitNewEntry = findViewById(R.id.submitNewEntry);
+        submitNewEntry = findViewById(R.id.submitEdit);
 
 
         insertNewItemRecord();
@@ -35,20 +35,20 @@ public class AddNewItem extends AppCompatActivity {
         submitNewEntry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean insert = database.insertNewItem(barcode.getText().toString(), itemName.getText().toString(), itemPrice.getText().toString());
-                if (insert && itemName.getText().toString().trim().length() != 0 && itemPrice.getText().toString().trim().length() != 0) {
+                String insertIName = itemName.getText().toString();
+                String insertPrice = itemPrice.getText().toString();
+                if (insertIName.matches("") && insertPrice.matches("")) {
+                    Toast.makeText(AddNewItem.this, "An Error occurred please check data and try again", Toast.LENGTH_SHORT).show();
+                    barcode.getText().clear();
+                    itemName.getText().clear();
+                    itemPrice.getText().clear();
+                } else {
+                    database.insertNewItem(barcode.getText().toString(), itemName.getText().toString(), itemPrice.getText().toString());
                     Toast.makeText(AddNewItem.this, "Item Added", Toast.LENGTH_SHORT).show();
                     barcode.getText().clear();
                     itemName.getText().clear();
                     itemPrice.getText().clear();
                     backToMain();
-
-
-                } else {
-                    Toast.makeText(AddNewItem.this, "An Error occurred please check data and try again", Toast.LENGTH_SHORT).show();
-                    barcode.getText().clear();
-                    itemName.getText().clear();
-                    itemPrice.getText().clear();
                 }
 
 

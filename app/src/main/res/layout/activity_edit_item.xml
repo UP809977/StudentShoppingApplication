@@ -11,53 +11,53 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Add New Item"
+        android:text="Edit Item"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/barcodeEntry"
+        android:id="@+id/editBarcode"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="92dp"
         android:layout_marginTop="52dp"
         android:layout_marginEnd="37dp"
         android:ems="10"
-        android:hint="@string/newBarcode"
+        android:hint="Barcode"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <EditText
-        android:id="@+id/itemNameEntry"
+        android:id="@+id/editItem"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="70dp"
         android:layout_marginTop="68dp"
         android:layout_marginEnd="40dp"
         android:ems="10"
-        android:hint="@string/newItemName"
+        android:hint="Item Name"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/barcodeEntry" />
+        app:layout_constraintTop_toBottomOf="@+id/editBarcode" />
 
     <EditText
-        android:id="@+id/priceEntry"
+        android:id="@+id/editPrice"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="68dp"
         android:layout_marginTop="81dp"
         android:layout_marginEnd="41dp"
         android:ems="10"
-        android:hint="@string/newPrice"
+        android:hint="Edit Price"
         android:inputType="number|textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView7"
-        app:layout_constraintTop_toBottomOf="@+id/itemNameEntry" />
+        app:layout_constraintTop_toBottomOf="@+id/editItem" />
 
     <TextView
         android:id="@+id/textView5"
@@ -98,6 +98,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/priceEntry" />
+        app:layout_constraintTop_toBottomOf="@+id/editPrice" />
 
 </android.support.constraint.ConstraintLayout>

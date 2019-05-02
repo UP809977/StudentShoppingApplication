@@ -51,15 +51,23 @@ public class Search_Results extends AppCompatActivity {
 
 
 
+
+
         mAdapter.setOnItemClickListener(new ItemSearchAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(int i,String name,float price) {
+            public void onItemClick(String name,float price) {
                 Log.d("i: ","i test");
                 Log.d("item name sr: ",name);
                 Log.d("item price sr: ",String.valueOf(price));
 
                 //SelectedItems chosenItem = selecteditems.add(new SelectedItems(name,price));
                 sendSelectedItemToMainActivity(name,price);
+
+            }
+
+            @Override
+            public void onEditClick(String name, float price) {
+                sendToEdit(name,price);
 
             }
         });
@@ -99,6 +107,13 @@ public class Search_Results extends AppCompatActivity {
         setResult(RESULT_OK,itemChosen);
         finish();
 
+    }
+
+    private void sendToEdit(String name, Float price){
+        Intent itemEdit = new Intent(this, EditItem.class);
+        itemEdit.putExtra("eName",name);
+        itemEdit.putExtra("ePrice",price);
+        startActivity(itemEdit);
     }
 
 

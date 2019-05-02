@@ -21,4 +21,10 @@
         android:text="price"
         android:textSize="20sp" />
 
+    <ImageView
+        android:id="@+id/edit"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_edit_black_24dp" />
+
 </LinearLayout>
