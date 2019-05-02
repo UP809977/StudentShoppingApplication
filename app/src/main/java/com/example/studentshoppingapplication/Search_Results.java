@@ -66,8 +66,8 @@ public class Search_Results extends AppCompatActivity {
             }
 
             @Override
-            public void onEditClick(String barcode, String name, float price) {
-                sendToEdit(barcode,name,price);
+            public void onEditClick(int id,String barcode, String name, float price) {
+                sendToEdit(id,barcode,name,price);
 
             }
         });
@@ -109,8 +109,9 @@ public class Search_Results extends AppCompatActivity {
 
     }
 
-    private void sendToEdit(String barcode ,String name, Float price){
+    private void sendToEdit(int id,String barcode ,String name, Float price){
         Intent itemEdit = new Intent(this, EditItem.class);
+        itemEdit.putExtra("eID", id);
         itemEdit.putExtra("eBarcode",barcode);
         itemEdit.putExtra("eName",name);
         itemEdit.putExtra("ePrice",price);

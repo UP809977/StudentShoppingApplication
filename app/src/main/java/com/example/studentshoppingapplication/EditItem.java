@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import static java.lang.String.valueOf;
@@ -13,6 +14,7 @@ import static java.lang.String.valueOf;
 public class EditItem extends AppCompatActivity {
     private DatabaseHandler database;
     private Button submitEdit;
+    private TextView editID;
     private EditText editBarcode, editItemName, editPrice;
 
     @Override
@@ -20,6 +22,7 @@ public class EditItem extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_item);
         database = new DatabaseHandler(this);
+        editID = findViewById(R.id.editID);
         editBarcode = findViewById(R.id.editBarcode);
         editItemName = findViewById(R.id.editItem);
         editPrice = findViewById(R.id.editPrice);
@@ -30,9 +33,11 @@ public class EditItem extends AppCompatActivity {
 
     public void getEditItems(){
         Intent itemEdit = getIntent();
+        int incomingID = itemEdit.getIntExtra("eID",0);
         String incomingEBarcode = itemEdit.getStringExtra("eBarcode");
         String incomingEName = itemEdit.getStringExtra("eName");
         float incomingEPrice = itemEdit.getFloatExtra("ePrice",0);
+        editID.setText(valueOf(incomingID));
         editBarcode.setText(incomingEBarcode);
         editItemName.setText(incomingEName);
         editPrice.setText(valueOf(incomingEPrice));
@@ -48,7 +53,7 @@ public class EditItem extends AppCompatActivity {
                 if (editedaAme.matches("") && editedPrice.matches("")) {
                     Toast.makeText(EditItem.this, "An Error occurred please check data and try again", Toast.LENGTH_SHORT).show();
                 }else{
-                    database.upDateItem(editBarcode.getText().toString(),editItemName.getText().toString(),editPrice.getText().toString());
+                    database.upDateItem(editID.getText().toString(),editBarcode.getText().toString(),editItemName.getText().toString(),editPrice.getText().toString());
                     Toast.makeText(EditItem.this, "Item Updated", Toast.LENGTH_SHORT).show();
                     editBarcode.getText().clear();
                     editItemName.getText().clear();

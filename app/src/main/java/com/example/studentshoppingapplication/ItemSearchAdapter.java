@@ -19,7 +19,7 @@ public class ItemSearchAdapter extends RecyclerView.Adapter<ItemSearchAdapter.It
 
     public interface OnItemClickListener{
         void onItemClick(String name, float price);
-        void onEditClick (String barcode , String name, float price);
+        void onEditClick (int id ,String barcode , String name, float price);
     }
 
     public void setOnItemClickListener(OnItemClickListener listner){
@@ -38,6 +38,7 @@ public class ItemSearchAdapter extends RecyclerView.Adapter<ItemSearchAdapter.It
         public TextView itemName;
         public TextView itemPrice;
         public TextView itemBarcode;
+        public TextView itemID;
         public ImageView mEdit;
 
         public ItemSearchHolder(View itemView, final OnItemClickListener listener) {
@@ -46,6 +47,7 @@ public class ItemSearchAdapter extends RecyclerView.Adapter<ItemSearchAdapter.It
             itemName = itemView.findViewById(R.id.textView_ItemName);
             itemPrice = itemView.findViewById(R.id.textView_ItemPrice);
             itemBarcode = itemView.findViewById(R.id.barcode);
+            itemID = itemView.findViewById(R.id.id);
             mEdit = itemView.findViewById(R.id.edit);
 
 
@@ -72,7 +74,7 @@ public class ItemSearchAdapter extends RecyclerView.Adapter<ItemSearchAdapter.It
                         int i = getAdapterPosition();
                         if(i != RecyclerView.NO_POSITION){
 
-                            listener.onEditClick(itemBarcode.getText().toString(),itemName.getText().toString(),Float.valueOf(itemPrice.getText().toString()));
+                            listener.onEditClick(Integer.valueOf(itemID.getText().toString()),itemBarcode.getText().toString(),itemName.getText().toString(),Float.valueOf(itemPrice.getText().toString()));
 
                         }
                     }
@@ -94,12 +96,12 @@ public class ItemSearchAdapter extends RecyclerView.Adapter<ItemSearchAdapter.It
         if (mCursor.moveToPosition(i)){
             String name = mCursor.getString(mCursor.getColumnIndex(DatabaseHandler.C_Item_Name));
             float price = mCursor.getFloat(mCursor.getColumnIndex(DatabaseHandler.C_Price));
-            long id = mCursor.getLong(mCursor.getColumnIndex(DatabaseHandler.C_ID));
+            int id = mCursor.getInt(mCursor.getColumnIndex(DatabaseHandler.C_ID));
             String barcode = mCursor.getString(mCursor.getColumnIndex(DatabaseHandler.C_Barcode));
 
             itemSearchHolder.itemName.setText(name);
             itemSearchHolder.itemPrice.setText(String.valueOf(price));
-            itemSearchHolder.itemView.setTag(id);
+            itemSearchHolder.itemID.setText(String.valueOf(id));
             itemSearchHolder.itemBarcode.setText(barcode);
 
 

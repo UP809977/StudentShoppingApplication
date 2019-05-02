@@ -65,12 +65,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     }
 
-    public boolean upDateItem (String barcode, String itemName, String price){
+    public boolean upDateItem (String id,String barcode, String itemName, String price){
         SQLiteDatabase database = this.getReadableDatabase();
         ContentValues edirItem = new ContentValues();
+        edirItem.put(C_Barcode,barcode);
         edirItem.put(C_Item_Name, itemName);
         edirItem.put(C_Price, price);
-        database.update(TABLE_NAME,edirItem," Barcode = ? ",new String[]{ barcode });
+        database.update(TABLE_NAME,edirItem," ID = ? ",new String[]{ id });
         return true;
 
     }
