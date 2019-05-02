@@ -39,26 +39,27 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="47dp"
         android:layout_marginBottom="35dp"
-        android:text="Searched For"
+        android:text="Searched For:"
         app:layout_constraintBottom_toTopOf="@+id/itemResultsRecycler"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textStyle="bold"
+        android:textSize="25sp"/>
 
     <TextView
         android:id="@+id/itemSearched"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
+        android:layout_marginStart="156dp"
         android:layout_marginTop="47dp"
         android:layout_marginBottom="35dp"
         android:text="text"
+        android:textSize="25sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/itemResultsRecycler"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-
-"
         android:/>
 
 
