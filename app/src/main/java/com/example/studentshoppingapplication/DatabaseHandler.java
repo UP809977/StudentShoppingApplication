@@ -1,5 +1,6 @@
 package com.example.studentshoppingapplication;
 
+//imports
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -19,7 +20,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     //Table fields
     public static final String C_ID = "ID";
     public static final String C_Item_Name = "Item_Name";
-   //private static final String C_Supermarket= "Supermarket";
     public static final String C_Price= "Price";
     public static final String C_Barcode= "Barcode";
 
@@ -30,6 +30,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     }
 
+    //used to create the database
     @Override
     public void onCreate(SQLiteDatabase database) {
         String createTable = "CREATE TABLE IF NOT EXISTS "+ TABLE_NAME +
@@ -38,11 +39,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 ""+ C_Item_Name +" Text NOT NULL," +
                 ""+ C_Price + " real NOT NULL )";
         database.execSQL(createTable);
-        addTestItems();
 
 
     }
 
+    //used to upgrade the database, not currently used in the system
     @Override
     public void onUpgrade(SQLiteDatabase database, int oldVersion, int newVersion) {
         database.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
@@ -50,6 +51,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     }
 
+    //used to take the data from the AddNewItem class and add it to the database
     public boolean insertNewItem(String barcode, String itemName, String price) {
         SQLiteDatabase database = this.getReadableDatabase();
         ContentValues newItem = new ContentValues();
@@ -65,6 +67,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     }
 
+    //used to update the data using data sent from the EditItem class, ID field used as it is unique to each item
     public boolean upDateItem (String id,String barcode, String itemName, String price){
         SQLiteDatabase database = this.getReadableDatabase();
         ContentValues edirItem = new ContentValues();
@@ -73,26 +76,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         edirItem.put(C_Price, price);
         database.update(TABLE_NAME,edirItem," ID = ? ",new String[]{ id });
         return true;
-
-    }
-
-    public Cursor getAllData(){
-        SQLiteDatabase database = this.getWritableDatabase();
-        Cursor results = database.rawQuery("select * from "+TABLE_NAME,null);
-        return results;
-    }
-
-    public void addTestItems(){
-        ContentValues testItems = new ContentValues();
-        testItems.put(C_Barcode, 1);
-        testItems.put(C_Item_Name, "test1");
-        testItems.put(C_Price, 1);
-        testItems.put(C_Barcode, 2);
-        testItems.put(C_Item_Name, "test2");
-        testItems.put(C_Price, 2);
-        testItems.put(C_Barcode, 3);
-        testItems.put(C_Item_Name, "test3");
-        testItems.put(C_Price, 3);
 
     }
 

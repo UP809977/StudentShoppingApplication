@@ -1,8 +1,8 @@
 package com.example.studentshoppingapplication;
 
+//imports
 import android.content.Context;
 import android.database.Cursor;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,22 +12,27 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class ItemSearchAdapter extends RecyclerView.Adapter<ItemSearchAdapter.ItemSearchHolder> {
+    //vars so that the database can be searched
     private Context mContext;
     private Cursor mCursor;
+    //var that holds the user click
     private OnItemClickListener mListener;
-    //private ItemSearchAdapter that;
 
+
+    //interfaces that create the onclicklistners for the item so it can be sent to the mainactibity or the edititem
     public interface OnItemClickListener{
         void onItemClick(String name, float price);
         void onEditClick (int id ,String barcode , String name, float price);
     }
 
+    //creates the handler for the onclick
     public void setOnItemClickListener(OnItemClickListener listner){
         mListener = listner;
     }
 
 
 
+    //used to populate the recyclerview from data searched from the database
     public ItemSearchAdapter(Context context, Cursor cursor){
         mContext = context;
         mCursor = cursor;
@@ -44,6 +49,7 @@ public class ItemSearchAdapter extends RecyclerView.Adapter<ItemSearchAdapter.It
         public ItemSearchHolder(View itemView, final OnItemClickListener listener) {
             super(itemView);
 
+            //binds the textviews and icon to variables
             itemName = itemView.findViewById(R.id.textView_ItemName);
             itemPrice = itemView.findViewById(R.id.textView_ItemPrice);
             itemBarcode = itemView.findViewById(R.id.barcode);
@@ -51,6 +57,7 @@ public class ItemSearchAdapter extends RecyclerView.Adapter<ItemSearchAdapter.It
             mEdit = itemView.findViewById(R.id.edit);
 
 
+            //logic to handle the user click on the itemview so it can be sent to the MainActivity
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -67,6 +74,7 @@ public class ItemSearchAdapter extends RecyclerView.Adapter<ItemSearchAdapter.It
 
                 }
             });
+            //logic to handle user click on the icon so that it can sent to the EditItem fom.
             mEdit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -84,6 +92,7 @@ public class ItemSearchAdapter extends RecyclerView.Adapter<ItemSearchAdapter.It
         }
     }
 
+    //creates the views used for the recyclerview
     @Override
     public ItemSearchHolder onCreateViewHolder( ViewGroup viewGroup, int i) {
         LayoutInflater inflater = LayoutInflater.from(mContext);
@@ -91,6 +100,7 @@ public class ItemSearchAdapter extends RecyclerView.Adapter<ItemSearchAdapter.It
         return new ItemSearchHolder(view, mListener);
     }
 
+    //used to get the data that the user has searched for and add them to the views inside the recyclerview
     @Override
     public void onBindViewHolder(ItemSearchHolder itemSearchHolder, int i) {
         if (mCursor.moveToPosition(i)){
@@ -109,11 +119,13 @@ public class ItemSearchAdapter extends RecyclerView.Adapter<ItemSearchAdapter.It
 
     }
 
+    //used to iterate though the database so that all the relevant data is taken
     @Override
     public int getItemCount() {
         return mCursor.getCount();
     }
 
+    //used when the user searches for a different item in the main activity and new data is neeeded in the recyclerview
     public void swapCursor(Cursor newCursor){
         if (mCursor != null){
             mCursor.close();
