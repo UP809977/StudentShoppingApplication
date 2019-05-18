@@ -37,7 +37,7 @@ public class AddNewItem extends AppCompatActivity {
             public void onClick(View v) {
                 String insertIName = itemName.getText().toString();
                 String insertPrice = itemPrice.getText().toString();
-                if (insertIName.matches("") && insertPrice.matches("")) {
+                if (insertIName.matches("") || insertPrice.matches("")) {
                     Toast.makeText(AddNewItem.this, "An Error occurred please check data and try again", Toast.LENGTH_SHORT).show();
                     barcode.getText().clear();
                     itemName.getText().clear();

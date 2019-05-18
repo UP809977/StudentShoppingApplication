@@ -50,7 +50,7 @@ public class EditItem extends AppCompatActivity {
             public void onClick(View v) {
                 String editedaAme = editItemName.getText().toString();
                 String editedPrice = editPrice.getText().toString();
-                if (editedaAme.matches("") && editedPrice.matches("")) {
+                if (editedaAme.matches("") || editedPrice.matches("")) {
                     Toast.makeText(EditItem.this, "An Error occurred please check data and try again", Toast.LENGTH_SHORT).show();
                 }else{
                     database.upDateItem(editID.getText().toString(),editBarcode.getText().toString(),editItemName.getText().toString(),editPrice.getText().toString());
